@@ -3,6 +3,7 @@ package com.example.gurjitsingh3499.playstoreapp.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,7 +61,24 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main, container, false);
+        View view = inflater.inflate(R.layout.fragment_main, container, false);
+
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        CategoryFragment categoryFragment;
+        CategoryFragment categoryFragment1;
+        CategoryFragment categoryFragment2;
+
+        categoryFragment = CategoryFragment.newInstance("lol","lol");
+        fragmentManager.beginTransaction().add(R.id.container_top_row, categoryFragment).commit();
+
+        categoryFragment1 = CategoryFragment.newInstance("lol","lol");
+        fragmentManager.beginTransaction().add(R.id.container_mid_row,categoryFragment1).commit();
+
+        categoryFragment2 = CategoryFragment.newInstance("lol","lol");
+        fragmentManager.beginTransaction().add(R.id.container_bottom_row, categoryFragment2).commit();
+
+
+        return view;
     }
 
 }

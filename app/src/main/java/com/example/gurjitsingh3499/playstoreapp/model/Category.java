@@ -20,7 +20,7 @@ public class Category {
     }
 
     public String getImgUri() {
-        return imgUri;
+        return DRAWABLE + imgUri;
     }
 
 }

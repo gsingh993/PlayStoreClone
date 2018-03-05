@@ -23,12 +23,7 @@ public class ContentAdapter extends RecyclerView.Adapter<CategoryViewHolder>{
         this.categories = categories;
     }
 
-    @Override
-    public CategoryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View catergoryCard = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_category, parent,false);
-        return new CategoryViewHolder(catergoryCard);
-    }
 
     @Override
     public void onBindViewHolder(CategoryViewHolder holder, int position) {
@@ -41,5 +36,12 @@ public class ContentAdapter extends RecyclerView.Adapter<CategoryViewHolder>{
     @Override
     public int getItemCount() {
         return categories.size();
+    }
+
+    @Override
+    public CategoryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
+        View catergoryCard = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_category, parent,false);
+        return new CategoryViewHolder(catergoryCard);
     }
 }

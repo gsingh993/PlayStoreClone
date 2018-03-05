@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import com.example.gurjitsingh3499.playstoreapp.R;
 import com.example.gurjitsingh3499.playstoreapp.adapters.ContentAdapter;
+import com.example.gurjitsingh3499.playstoreapp.services.DataService;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,14 +19,15 @@ import com.example.gurjitsingh3499.playstoreapp.adapters.ContentAdapter;
  * create an instance of this fragment.
  */
 public class CategoryFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+
+    private static final String ARG_CATEGORY_TYPE = "category_type";
+
+    private int categoryType;
+
+    public static final int CATEGORY_TYPE_FEATURED = 0;
+    public static final int CATEGORY_TYPE_RECENT = 1;
+    public static final int CATEGORY_TYPE_PARTY = 2;
 
 
     public CategoryFragment() {
@@ -36,16 +38,14 @@ public class CategoryFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
+     * @param categoryType The Category type.
      * @return A new instance of fragment CategoryFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static CategoryFragment newInstance(String param1, String param2) {
+    public static CategoryFragment newInstance(int categoryType) {
         CategoryFragment fragment = new CategoryFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putInt(ARG_CATEGORY_TYPE, categoryType);
         fragment.setArguments(args);
         return fragment;
     }
@@ -54,8 +54,7 @@ public class CategoryFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            categoryType = getArguments().getInt(ARG_CATEGORY_TYPE);
         }
     }
 
@@ -68,7 +67,17 @@ public class CategoryFragment extends Fragment {
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.content_recycler);
         recyclerView.setHasFixedSize(true); //set fixed size to improve performance
 
-        ContentAdapter contentAdapter = new ContentAdapter();
+        ContentAdapter contentAdapter;
+
+        if(categoryType == CATEGORY_TYPE_FEATURED){
+            contentAdapter = new ContentAdapter(DataService.getInstance().getFeaturedStations());
+        }else if(categoryType == CATEGORY_TYPE_RECENT){
+            contentAdapter = new ContentAdapter(DataService.getInstance().getRecentStations());
+        }else {
+            contentAdapter = new ContentAdapter(DataService.getInstance().getPartyStations());
+        }
+
+
         recyclerView.setAdapter(contentAdapter);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());

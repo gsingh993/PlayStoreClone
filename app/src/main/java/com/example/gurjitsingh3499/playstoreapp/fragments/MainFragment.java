@@ -68,13 +68,13 @@ public class MainFragment extends Fragment {
         CategoryFragment categoryFragment1;
         CategoryFragment categoryFragment2;
 
-        categoryFragment = CategoryFragment.newInstance("lol","lol");
+        categoryFragment = CategoryFragment.newInstance(CategoryFragment.CATEGORY_TYPE_FEATURED);
         fragmentManager.beginTransaction().add(R.id.container_top_row, categoryFragment).commit();
 
-        categoryFragment1 = CategoryFragment.newInstance("lol","lol");
+        categoryFragment1 = CategoryFragment.newInstance(CategoryFragment.CATEGORY_TYPE_RECENT);
         fragmentManager.beginTransaction().add(R.id.container_mid_row,categoryFragment1).commit();
 
-        categoryFragment2 = CategoryFragment.newInstance("lol","lol");
+        categoryFragment2 = CategoryFragment.newInstance(CategoryFragment.CATEGORY_TYPE_PARTY);
         fragmentManager.beginTransaction().add(R.id.container_bottom_row, categoryFragment2).commit();
 
 

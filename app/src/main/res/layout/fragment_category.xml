@@ -4,6 +4,8 @@
     android:layout_height="match_parent"
     tools:context="com.example.gurjitsingh3499.playstoreapp.fragments.CategoryFragment">
 
-    <include layout="@layout/content_recycler"/>
+    <include
+        layout="@layout/content_recycler"
+        android:layout_margin="0dp" />
 
 </FrameLayout>

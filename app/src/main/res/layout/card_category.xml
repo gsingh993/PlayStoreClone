@@ -8,27 +8,31 @@
     <android.support.v7.widget.CardView
         android:id="@+id/card_category"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp">
+
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
             <ImageView
+                android:id="@+id/main_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/flightplanmusic"
-                android:id="@+id/main_image"/>
+                android:src="@drawable/flightplanmusic" />
+
             <TextView
+                android:id="@+id/main_text"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:gravity="center"
                 android:lines="2"
                 android:text="Flight Music"
                 android:textColor="#4A4A4A"
-                android:textSize="15dp"
-                android:id="@+id/main_text"
-                android:gravity="center"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"/>
+                android:textSize="15dp" />
         </LinearLayout>
     </android.support.v7.widget.CardView>
 

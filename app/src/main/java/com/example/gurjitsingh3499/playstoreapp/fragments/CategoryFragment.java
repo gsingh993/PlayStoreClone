@@ -1,6 +1,7 @@
 package com.example.gurjitsingh3499.playstoreapp.fragments;
 
 
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -76,6 +77,7 @@ public class CategoryFragment extends Fragment {
         }else {
             contentAdapter = new ContentAdapter(DataService.getInstance().getPartyStations());
         }
+        recyclerView.addItemDecoration(new HorizontalSpaceDecorator(-30));
 
 
         recyclerView.setAdapter(contentAdapter);
@@ -88,4 +90,18 @@ public class CategoryFragment extends Fragment {
         return view;
     }
 
+}
+
+class HorizontalSpaceDecorator extends RecyclerView.ItemDecoration{
+    private final int spacer;
+
+    public HorizontalSpaceDecorator(int spacer) {
+        this.spacer = spacer;
+    }
+
+    @Override
+    public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+        super.getItemOffsets(outRect, view, parent, state);
+        outRect.right = spacer;
+    }
 }
